@@ -27,7 +27,6 @@ export class FilesController {
   @UseInterceptors(FileInterceptor('file'))
   @Bind(UploadedFile())
   uploadFile(file) {
-    console.log(file);
     return new Promise((resolve) => {
       const id = v4();
       const gFile = bucket.file(id);
