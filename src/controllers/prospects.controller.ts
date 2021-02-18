@@ -1,17 +1,29 @@
-import { Controller, Get, Put, Post, Body } from '@nestjs/common';
+import { Controller, Get, Put, Post, Body, Param } from '@nestjs/common';
 import { CreateProspectDto } from 'src/dto/create-prospect.dto';
+import { Prospect } from 'src/interfaces/prospect.interface';
+import { ProspectsService } from 'src/services/prospects.service';
 
 @Controller('prospects')
 export class ProspectsController {
+  constructor(private prospectsService: ProspectsService) {}
+
   @Get()
-  findAll() {}
+  async findAll(): Promise<Prospect[]> {
+    return this.prospectsService.findAll();
+  }
 
   @Get(':id')
-  findOne() {}
+  async findById(@Param('id') id) {
+    return this.prospectsService.findById(id);
+  }
 
   @Post()
-  createProspect(@Body() createProspectDto: CreateProspectDto) {}
+  async createProspect(@Body() createProspectDto: CreateProspectDto) {
+    return this.prospectsService.create(createProspectDto);
+  }
 
   @Put(':id/status')
-  updateProspect(@Body() body) {}
+  async updateProspectStatusById(@Param('id') id, @Body() body) {
+    return this.prospectsService.updateStatusById(id, body.status);
+  }
 }
