@@ -24,7 +24,7 @@ export class ProspectsService {
   }
   async updateStatusById(id: string, status: string): Promise<Prospect> {
     return this.prospectModel.updateOne(
-      { _id: id, status: 'enviado' },
+      { _id: id, estatus: 'enviado' },
       { estatus: status },
     );
   }
