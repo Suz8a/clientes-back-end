@@ -8,10 +8,7 @@ import { ProspectsService } from './services/prospects.service';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://addy:addy123@cluster0.qrhtn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-      {},
-    ),
+    MongooseModule.forRoot(process.env.MONGO_URI, {}),
     MongooseModule.forFeature([
       { name: Prospect.name, schema: ProspectSchema },
     ]),
