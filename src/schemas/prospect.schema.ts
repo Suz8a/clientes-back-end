@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 export type ProspectDocument = Prospect & Document;
-
+export type Statuses = 'enviado' | 'autorizado' | 'rechazado';
 @Schema()
 export class Prospect {
   @Prop()
@@ -24,7 +24,7 @@ export class Prospect {
   @Prop()
   rfc: string;
   @Prop()
-  estatus: string;
+  estatus: Statuses;
   @Prop()
   documentos: { nombre: string; documento: string }[];
 }

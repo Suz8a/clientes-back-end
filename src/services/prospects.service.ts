@@ -2,7 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateProspectDto } from 'src/dto/create-prospect.dto';
-import { ProspectDocument, Prospect } from 'src/schemas/prospect.schema';
+import {
+  ProspectDocument,
+  Prospect,
+  Statuses,
+} from 'src/schemas/prospect.schema';
 
 @Injectable()
 export class ProspectsService {
@@ -22,7 +26,7 @@ export class ProspectsService {
     const createdProspect = new this.prospectModel(createProspectDto);
     return createdProspect.save();
   }
-  async updateStatusById(id: string, status: string): Promise<Prospect> {
+  async updateStatusById(id: string, status: Statuses): Promise<Prospect> {
     return this.prospectModel.updateOne(
       { _id: id, estatus: 'enviado' },
       { estatus: status },

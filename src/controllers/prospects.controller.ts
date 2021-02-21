@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Body, Param, Patch } from '@nestjs/common';
 import { CreateProspectDto } from 'src/dto/create-prospect.dto';
+import { UpdateStatusDto } from 'src/dto/update-status.dto';
 import { Prospect } from 'src/interfaces/prospect.interface';
 import { ProspectsService } from 'src/services/prospects.service';
 
@@ -25,7 +26,7 @@ export class ProspectsController {
   @Patch(':id/status')
   async updateProspectStatusById(
     @Param('id') id,
-    @Body('status') status: string,
+    @Body() { status }: UpdateStatusDto,
   ) {
     return this.prospectsService.updateStatusById(id, status);
   }
