@@ -5,27 +5,27 @@ export type ProspectDocument = Prospect & Document;
 export type Statuses = 'enviado' | 'autorizado' | 'rechazado';
 @Schema()
 export class Prospect {
-  @Prop()
+  @Prop({ required: true })
   nombre: string;
-  @Prop()
+  @Prop({ required: true })
   primerApellido: string;
   @Prop()
   segundoApellido?: string;
-  @Prop()
+  @Prop({ required: true })
   calle: string;
-  @Prop()
-  numero: number;
-  @Prop()
+  @Prop({ required: true })
+  numero: string;
+  @Prop({ required: true })
   colonia: string;
-  @Prop()
-  codigoPostal: number;
-  @Prop()
-  telefono: number;
-  @Prop()
+  @Prop({ required: true })
+  codigoPostal: string;
+  @Prop({ required: true })
+  telefono: string;
+  @Prop({ required: true })
   rfc: string;
-  @Prop()
+  @Prop({ required: true })
   estatus: Statuses;
-  @Prop()
+  @Prop({ required: true })
   documentos: { nombre: string; documento: string }[];
 }
 

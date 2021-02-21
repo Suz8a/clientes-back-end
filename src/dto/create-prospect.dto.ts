@@ -1,4 +1,11 @@
-import { IsString, IsArray, IsOptional, ValidateNested } from 'class-validator';
+import {
+  IsString,
+  IsArray,
+  IsOptional,
+  ValidateNested,
+  IsEnum,
+} from 'class-validator';
+import { Statuses } from 'src/schemas/prospect.schema';
 
 export class DocumentoDto {
   @IsString()
@@ -31,7 +38,7 @@ export class CreateProspectDto {
   codigoPostal: string;
 
   @IsString()
-  telefono: number;
+  telefono: string;
 
   @IsString()
   rfc: string;

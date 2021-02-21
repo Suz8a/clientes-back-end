@@ -23,7 +23,11 @@ export class ProspectsService {
   }
 
   async create(createProspectDto: CreateProspectDto): Promise<Prospect> {
-    const createdProspect = new this.prospectModel(createProspectDto);
+    const estatus: Statuses = 'enviado';
+    const createdProspect = new this.prospectModel({
+      ...createProspectDto,
+      estatus,
+    });
     return createdProspect.save();
   }
   async updateStatusById(id: string, status: Statuses): Promise<Prospect> {

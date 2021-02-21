@@ -3,10 +3,10 @@ export interface Prospect {
   primerApellido: string;
   segundoApellido?: string;
   calle: string;
-  numero: number;
+  numero: string;
   colonia: string;
-  codigoPostal: number;
-  telefono: number;
+  codigoPostal: string;
+  telefono: string;
   rfc: string;
   estatus: string;
   documentos: { nombre: string; documento: string }[];
