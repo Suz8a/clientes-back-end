@@ -8,5 +8,5 @@ export class CreateProspectDto {
   codigoPostal: number;
   telefono: number;
   rfc: string;
-  documentos: {}[];
+  documentos: { nombre: string; documento: string }[];
 }
