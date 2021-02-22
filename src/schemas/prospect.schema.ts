@@ -35,7 +35,7 @@ export class Prospect {
   @Prop({ required: true })
   estatus: Statuses;
 
-  @Prop({ required: true })
+  @Prop()
   motivoRechazo: string;
 
   @Prop({ required: true })
