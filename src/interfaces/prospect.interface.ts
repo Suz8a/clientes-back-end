@@ -9,5 +9,6 @@ export interface Prospect {
   telefono: string;
   rfc: string;
   estatus: string;
+  motivoRechazo: string;
   documentos: { nombre: string; documento: string }[];
 }

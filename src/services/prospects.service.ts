@@ -27,13 +27,18 @@ export class ProspectsService {
     const createdProspect = new this.prospectModel({
       ...createProspectDto,
       estatus,
+      motivoRechazo: '',
     });
     return createdProspect.save();
   }
-  async updateStatusById(id: string, status: Statuses): Promise<Prospect> {
+  async updateStatusById(
+    id: string,
+    status: Statuses,
+    motivoRechazo,
+  ): Promise<Prospect> {
     return this.prospectModel.updateOne(
       { _id: id, estatus: 'enviado' },
-      { estatus: status },
+      { estatus: status, motivoRechazo },
     );
   }
 }

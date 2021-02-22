@@ -27,8 +27,8 @@ export class ProspectsController {
   @Patch(':id/status')
   async updateProspectStatusById(
     @Param('id') id,
-    @Body() { status }: UpdateStatusDto,
+    @Body() { status, motivoRechazo }: UpdateStatusDto,
   ) {
-    return this.prospectsService.updateStatusById(id, status);
+    return this.prospectsService.updateStatusById(id, status, motivoRechazo);
   }
 }

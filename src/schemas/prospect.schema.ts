@@ -7,24 +7,37 @@ export type Statuses = 'enviado' | 'autorizado' | 'rechazado';
 export class Prospect {
   @Prop({ required: true })
   nombre: string;
+
   @Prop({ required: true })
   primerApellido: string;
+
   @Prop()
   segundoApellido?: string;
+
   @Prop({ required: true })
   calle: string;
+
   @Prop({ required: true })
   numero: string;
+
   @Prop({ required: true })
   colonia: string;
+
   @Prop({ required: true })
   codigoPostal: string;
+
   @Prop({ required: true })
   telefono: string;
+
   @Prop({ required: true })
   rfc: string;
+
   @Prop({ required: true })
   estatus: Statuses;
+
+  @Prop({ required: true })
+  motivoRechazo: string;
+
   @Prop({ required: true })
   documentos: { nombre: string; documento: string }[];
 }

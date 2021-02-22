@@ -5,4 +5,7 @@ export class UpdateStatusDto {
   @IsString()
   @IsEnum(['autorizado', 'rechazado'])
   status: Statuses;
+
+  @IsString()
+  motivoRechazo: string;
 }

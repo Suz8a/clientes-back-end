@@ -43,6 +43,9 @@ export class CreateProspectDto {
   @IsString()
   rfc: string;
 
+  @IsString()
+  motivoRechazo: string;
+
   @IsArray()
   @ValidateNested()
   documentos: DocumentoDto[];
