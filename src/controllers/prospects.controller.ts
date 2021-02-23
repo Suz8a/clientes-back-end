@@ -1,8 +1,16 @@
-import { Controller, Get, Post, Body, Param, Patch } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Patch,
+  UseGuards,
+} from '@nestjs/common';
 import { CreateProspectDto } from 'src/dto/create-prospect.dto';
 import { UpdateStatusDto } from 'src/dto/update-status.dto';
+import { EvaluadorGuard } from 'src/guards/evaluador.guard';
 import { Prospect } from 'src/interfaces/prospect.interface';
-import { Statuses } from 'src/schemas/prospect.schema';
 import { ProspectsService } from 'src/services/prospects.service';
 
 @Controller('prospects')
@@ -10,6 +18,7 @@ export class ProspectsController {
   constructor(private prospectsService: ProspectsService) {}
 
   @Get()
+  @UseGuards(EvaluadorGuard)
   async findAll(): Promise<Prospect[]> {
     return this.prospectsService.findAll();
   }
