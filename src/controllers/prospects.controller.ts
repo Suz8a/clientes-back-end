@@ -10,6 +10,7 @@ import {
 import { CreateProspectDto } from 'src/dto/create-prospect.dto';
 import { UpdateStatusDto } from 'src/dto/update-status.dto';
 import { EvaluadorGuard } from 'src/guards/evaluador.guard';
+import { PromotorGuard } from 'src/guards/promotor.guard';
 import { Prospect } from 'src/interfaces/prospect.interface';
 import { ProspectsService } from 'src/services/prospects.service';
 
@@ -18,7 +19,6 @@ export class ProspectsController {
   constructor(private prospectsService: ProspectsService) {}
 
   @Get()
-  @UseGuards(EvaluadorGuard)
   async findAll(): Promise<Prospect[]> {
     return this.prospectsService.findAll();
   }
@@ -29,11 +29,13 @@ export class ProspectsController {
   }
 
   @Post()
+  @UseGuards(PromotorGuard)
   async createProspect(@Body() createProspectDto: CreateProspectDto) {
     return this.prospectsService.create(createProspectDto);
   }
 
   @Patch(':id/status')
+  @UseGuards(EvaluadorGuard)
   async updateProspectStatusById(
     @Param('id') id,
     @Body() { status, motivoRechazo }: UpdateStatusDto,
