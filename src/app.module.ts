@@ -5,9 +5,7 @@ import { Prospect, ProspectSchema } from './schemas/prospect.schema';
 import { ProspectsService } from './services/prospects.service';
 import { FilesController } from './controllers/file.controller';
 import { UsersService } from './services/users.service';
-import { LocalStrategy } from './strategies/local.strategy';
 import { AuthService } from './services/auth.service';
-
 import { AuthController } from './controllers/auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
@@ -23,12 +21,6 @@ import { JwtStrategy } from './strategies/jwt.strategy';
     ]),
   ],
   controllers: [ProspectsController, FilesController, AuthController],
-  providers: [
-    ProspectsService,
-    UsersService,
-    LocalStrategy,
-    AuthService,
-    JwtStrategy,
-  ],
+  providers: [ProspectsService, UsersService, AuthService, JwtStrategy],
 })
 export class AppModule {}
